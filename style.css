@@ -1,0 +1,128 @@
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  display: flex;
+  height: 100px;
+  padding: 20px;
+  justify-content: center;
+  align-content: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  color: rgb(0, 0, 0);
+  white-space: nowrap;
+  font-size: 20px;
+}
+
+table > thead {
+  background-color: rgb(210, 209, 205);
+  color: #444;
+}
+
+table > thead th {
+  padding: 15px;
+}
+
+table th,
+table td {
+  border: 3px solid #1b010169;
+  padding: 10px 15px;
+}
+
+button {
+  text-decoration: none;
+  color: #444;
+  background: #fff;
+  border: 1px solid;
+  display: inline-block;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 3px;
+  transition: 0.3s ease-in-out;
+  border-color: #26a69a;
+}
+
+button:hover {
+  box-shadow: 0 3px 8px #0003;
+}
+
+.chart {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  color: rgb(0, 0, 0);
+  font-size: x-large;
+  padding-top: 250px;
+}
+
+/* modal items style goes here */
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 6% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  background-color: rgb(210, 209, 205);
+}
+
+/* The Close Button */
+.close {
+  color: rgb(255, 0, 0);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+}
+
+.description {
+  flex: 50%;
+}
+
+.picture {
+  flex: 50%;
+}
+
+img {
+  height: 650px;
+  width: 750px;
+}

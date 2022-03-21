@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Computer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/icon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body background="images/pc_3.jpg">
+    <div class="conatainer">
+        <div class="title">
+            <h1>COMPUTER SPECIFICATIONS</h1>
+        </div>
+        <div class="chart">
+            <table border="1px">
+                <thead>
+                    <tr>
+                        <th>Components</th>
+                        <th>Title</th>
+                        <th>Basic Description</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Central Processing Unit/CPU</td>
+                        <td>Ryzen 5 3600</td>
+                        <td>Cores: 6 Thread: 12, Boost Clock: 4.2 GHz</td>
+                        <td style="text-align:center;"><button onclick="get_value(this)" value="1">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Graphics Processing Unit/GPU</td>
+                        <td>Gigabyte RTX 3060Ti Eagle OC</td>
+                        <td>VRAM: 8 GB GDDR6,  256 bit </td>
+                        <td style="text-align:center;"><button onclick="get_value(this)" value="2">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Memory</td>
+                        <td>Corsair Vengeance LPX 3200 MHz</td>
+                        <td>Capacity: 8GB </td>
+                        <td style="text-align:center;"><button onclick="get_value(this)" value="3">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Mother Board</td>
+                        <td>Asrock B550M Steel Legend</td>
+                        <td>Micro Atx, Chipset: B550</td>
+                        <td style="text-align:center;"><button onclick="get_value(this)" value="4">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Cpu Cooler</td>
+                        <td>Noctua U12S Chromax Black</td>
+                        <td>120mm Single Fan, Heat pipe: 5</td>
+                        <td style="text-align:center;"><button onclick="get_value(this)" value="5">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Case/Chasis</td>
+                        <td>MaxGreen A366BK ATX Casing</td>
+                        <td>ATX, 4 ARGB Casing Fan, USB: 3.2</td>
+                        <td style="text-align:center;"><button onclick="get_value(this)" value="6">View</button></td>
+                    </tr>                       
+                </tbody>
+                
+            </table>
+        </div>
+        <div class="footer">
+
+            <strong><p>&copy; copyright</p></strong>
+        </div>
+    </div>
+    <!-- modal goes here -->
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times</span>
+            <div class="row">
+                <div class="description">
+                    <h2 id="name"></h2>
+                    <p id="overview"><em></em></p>
+                    <h4>Specifications: </h4>
+                    <ul>
+                        <li id="li_1"></li>
+                        <li id="li_2"></li>
+                        <li id="li_3"></li>
+                        <li id="li_4"></li>
+                        <li id="li_5"></li>
+                    </ul>
+                </div>
+                <div class="picture">
+                    <img src="images/pc_3.jpg" id="image" alt="image containing lego">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+
+    let modal = document.getElementById("myModal");
+    let span = document.getElementsByClassName("close")[0];
+    let title = document.getElementById("name");
+    let overview = document.getElementById("overview");
+    let img = document.getElementById("image");
+    let arr = new Array(6);
+    for(let i=1;i<=5;i++) {
+        let str = "li_" + i.toString();
+        arr[i] = document.getElementById(str);
+    }
+    console.log(arr);
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function() {
+        if(event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+
+    ///product informations
+
+    const cpu = {
+        name: "Ryzen 5 3600",
+        desc: "The AMD Ryzen 5 3600 Processor is built in intelligence featuring 6 processor cores, 12 threads, and an astonishingly efficient 65W TDP.",
+        list_1: "Base Frequency: 3.6 Ghz",
+        list_2: "L2 Cache: 3 MB, L3 Cache: 32 MB",
+        list_3: "Cores: 6, Thread: 12",
+        list_4: "Maximum memory speed: 3200 MHz",
+        list_5: "Maximum number of memory channel: 2",
+        img_addr: "images/cpu.png"
+    }
+
+    const gpu = {
+        name: "Gigabyte RTX 3060ti Eagle OC",
+        desc: "Gigabyte GeForce RTX 3060 Ti GAMING OC PRO 8GB Graphics Card is featured with NVIDIA Ampere Streaming Multiprocessors, 2nd Generation RT Cores, 3rd Generation Tensor Cores, Powered by GeForce RTX 3060 Ti, Integrated with 8GB GDDR6 256-bit memory interface, WINDFORCE 3X Cooling System with alternate spinning fans, RGB Fusion 2.0 with Protection metal back plate. The latest NVIDIA Ampere architecture delivers the ultimate play, featuring advanced 2nd generation Ray Tracing Cores and 3rd generation Tensor Cores with greater throughput.",
+        list_1: "Core Clock: 1695 MHz (Reference Card: 1665 MHz)",
+        list_2: "CUDA® Cores: 4864",
+        list_3: "Memory clock: 14000 MHz",
+        list_4: "Memory Size: 8 GB(256 bit , GDDR6)",
+        list_5: "Memory Bandwidth (GB/sec): 448 GB/s",
+        img_addr: "images/kf-img.png"
+    }
+
+    const ram = {
+        name: "CORSAIR VENGEANCE LPX 8GB DDR4 3200MHz RAM",
+        desc: "The CORSAIR VENGEANCE LPX 8GB DDR4 3200MHz RAM is designed for high-performance overclocking. The heat spreader is made of pure aluminum for faster heat dissipation, and the eight-layer PCB helps manage heat and provides superior overclocking headroom. Each IC is individually screened for performance potential.",
+        list_1: "Type: DDR4",
+        list_2: "Capacity: 8GB (1 x 8GB)",
+        list_3: "Frequency: 3200MHz", 
+        list_4: "Operating voltage: 1.35V",
+        list_5: "Latency: 18-22-22-42",
+        img_addr: "images/ram.png"
+    }
+
+    const mobo = {
+        name: "Asrock B550M Steel Legend",
+        desc: "Steel Legend represents the philosophical state of rock-solid durability and irresistible aesthetics. Built around most demanding specs and features, the Steel Legend series aims at daily users and mainstream enthusiasts. Nahimic Audio offers you the most engaging listening experience, vibrant and rich with details.",
+        list_1: "Supports AMD AM4 Socket Ryzen™ 3000, 3000 G-Series, 4000 G-Series, 5000 and 5000 G-Series Desktop Processors",
+        list_2: "10 Power Phase Design, Dr. MOS",
+        list_3: "Supports DDR4 4733+ (OC)",
+        list_4: "1 PCIe 4.0 x16, 1 PCIe 3.0 x16, 1 PCIe 3.0 x1, 1 M.2 Key E for WiFi",
+        list_5: "7.1 CH HD Audio (Realtek ALC1200 Audio Codec), Nahimic Audio",
+        img_addr: "images/mobo.png"   
+    }
+
+    const cooler = {
+        name: "Noctua NH-U12S Chromax CPU Cooler with NF-F12 120mm Focused Flow PWM Fan",
+        desc: "The NH-U12S chromax.black is an all-black version of Noctua’s award-winning NH-U12S premium-quality quiet CPU cooler. Thanks to the same proven slim-tower heatsink design and NF-F12 PWM fan, it stays true to the NH-U12S’s successful formula of fusing excellent cooling performance with superb quietness of operation and outstanding RAM, case and PCIe compatibility. At the same time, the chromax.black version with its black fan and black coated heatsink combines these assets with a sleek stealth look.",
+        list_1: "NF-F12 120mm Focused Flow fan",
+        list_2: "SecuFirm2 multi-socket mounting system",
+        list_3: "Max. rotational speed (+/- 10%): 1500 RPM, rotational speed with L.N.A. (+/- 10%): 1200 RPM",
+        list_4: "Material: Cooler: Copper (base and heat-pipes), aluminium (cooling fins), soldered joints & nickel plating",
+        list_5: "Max. acoustical noise: 22.4 dB(A), Max. acoustical noise with L.N.A.: 18.6 dB(A)",
+        img_addr:  "images/clr.png"
+    }
+
+    const chasis = {
+        name: "MaxGreen A366BK ATX Casing",
+        desc: "he MaxGreen A366BK ATX Casing has ATX X3 chassis with black material inner with 0.5mm thickness. It has 2 USB 3.0 ports and an HD Audio port. The left side of the casing is fully made out of tempered glass. The casing will provide you with VGA holder, V3.0 PWM, ARGB Controller Box HUB, and Build-in Remote controller function. You will also get a front panel FN-Rainbow-C2 fan with Max Green logo and a rear panel FN-Rainbow-C2 fan with Max Green logo.",
+        list_1:"Type: ATX X3 chassis",
+        list_2: "USB3.0*2, HD_Audio Port",
+        list_3: "ARGB Controller Box HUB",
+        list_4: "tempered glass on the left side",
+        list_5: "Fan Support: 4",
+        img_addr: "images/chasis.png"    
+    }
+
+
+    function get_value(btn) {
+        modal.style.display = "block";
+        let c = btn.value;
+        if(c==1) info(cpu);
+        else if(c==2) info(gpu);
+        else if(c==3) info(ram);
+        else if(c==4) info(mobo);
+        else if(c==5) info(cooler);
+        else info(chasis);
+    }
+
+    function info(x) {
+        title.innerHTML = x.name;
+        overview.innerHTML = x.desc;
+        img.src = x.img_addr;
+        console.log(x.list_1);
+        for(let i=1;i<6;i++) {
+            arr[i].innerHTML =  x["list_" + i.toString()];
+        }
+    }
+
+
+</script>
+
+
+
+
+
+
+</html>
